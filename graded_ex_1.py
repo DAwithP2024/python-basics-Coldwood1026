@@ -71,14 +71,21 @@ def generate_receipt(name, email, cart, total_cost, address):
 
 
 def validate_name(name):
-    return all(char.isalpha() or char.isspace() for char in name) and len(name) > 0
+    return bool(re.match(r'^[A-Za-z]+\s[A-Za-z]+$', name))
 
 
 
+
+
+import re
 
 def validate_email(email):
-    regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+    # 允许没有顶级域名的简单格式
+    if email.strip() == "":
+        return False
+    regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})?$'
     return re.match(regex, email) is not None
+
 
 
 

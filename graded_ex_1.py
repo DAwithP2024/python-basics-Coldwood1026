@@ -1,3 +1,4 @@
+import re
 # Products available in the store by category
 products = {
     "IT Products": [
@@ -29,7 +30,7 @@ products = {
         ("Snacks", 8)
     ]
 }
-import re
+
 
 def display_sorted_products(products_list, sort_order):
     return sorted(products_list, key=lambda x: x[1], reverse=(sort_order == "desc"))
@@ -75,12 +76,8 @@ def validate_name(name):
 
 
 
-
-
-import re
-
 def validate_email(email):
-    # 允许没有顶级域名的简单格式
+  
     if email.strip() == "":
         return False
     regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})?$'
